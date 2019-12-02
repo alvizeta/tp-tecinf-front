@@ -1,0 +1,12 @@
+<div class="list-search" layout="row">
+    <div class="list-search-icon-container">
+        <md-icon aria-label="Close" class="material-icons list-search-icon">search</md-icon>
+    </div>
+    <div class="list-search-input-container" flex>
+        <input type="text" class="list-search-input" placeholder="{{ disabled? 'filter disabled' : (placeholder? placeholder : 'Search') }}" ng-disabled="disabled"
+               ng-model="query" ng-model-options="{ debounce: { 'default': 0, 'blur': 0 } }">
+    </div>
+    <div class="list-close-icon-container" ng-if="showClearButton">
+        <span class="list-close-icon icon-material icon-close clickable" ng-click="clearSearchText()"></span>
+    </div>
+</div>

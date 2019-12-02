@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tec inf app</title>
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+    <link href="bower_components/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="css/app.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body ng-app="tecinfapp" ng-cloak ng-controller="AppCtrl">
+
+    <div layout="row" layout-fill flex>
+
+        <md-sidenav fullscreen md-is-locked-open="$mdSidenav('left').isOpen() &amp;&amp; $mdMedia('gt-md')" layout="column" class="md-sidenav-left md-whiteframe-z3" md-component-id="left"
+                    md-whiteframe="4">
+
+            <md-toolbar layout-align="start center" style="background-color: #b0121d" layout="row" class="md-theme-indigo" class="md-tall md-hue-2">
+                <md-button ng-disabled="true" xng-click="closeSidebar('left')" class="md-icon-button">
+                    <md-icon aria-label="Close" class="material-icons">flash_on</md-icon>
+                </md-button>
+
+                <h1 flex class="md-toolbar-tools">Tec inf app</h1>
+                <md-button ng-click="closeSidebar('left')" class="md-icon-button">
+                    <md-icon aria-label="Close" class="material-icons">close</md-icon>
+                    <md-tooltip md-direction="bottom">Close Nav Bar</md-tooltip>
+                </md-button>
+
+            </md-toolbar>
+
+            <md-list>
+
+                <md-list-item ng-class="{ 'main-sidenav-item-selected': isInState('products.list')}" ng-click="goTo('products.list')"
+                              class="secondary-button-padding">
+                    <md-icon aria-label="administrador" class="material-icons">storage</md-icon>
+                    <span flex style="padding-top: 7px;">Products</span>
+                </md-list-item>
+
+                <md-list-item ng-class="{ 'main-sidenav-item-selected': isInState('users.list')}" ng-click="goTo('users.list')" class="secondary-button-padding">
+                    <md-icon aria-label="administrador" class="material-icons">person</md-icon>
+                    <span flex style="padding-top: 7px;">Users</span>
+                </md-list-item>
+
+            </md-list>
+
+        </md-sidenav>
+
+        <md-content flex>
+            <div ui-view></div>
+        </md-content>
+
+    </div>
+
+    <!-- inject:js -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
+    <script src="bower_components/md-pickers/src/mdPickers.js"></script>
+    <script src="bower_components/angular-material-time-picker/dist/md-time-picker.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+
+    <script src="js/config/app.js"></script>
+    <script src="js/controllers/home-controller.js"></script>
+    <script src="js/controllers/products.js"></script>
+    <script src="js/controllers/users.js"></script>
+    <script src="js/controllers/login-controller.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+</body>
+
+</html>

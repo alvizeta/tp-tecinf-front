@@ -1,0 +1,47 @@
+<md-dialog ng-style="{'min-height': '325px', 'width': '700px'}">
+
+    <md-toolbar style="background-color: #b0121d">
+        <div class="md-toolbar-tools">
+            <h2>Add user</h2>
+            <span flex></span>
+            <md-button ng-click="closeDialog()" class="md-icon-button">
+                <md-icon aria-label="Close" class="material-icons">close</md-icon>
+                <md-tooltip md-direction="bottom">Close</md-tooltip>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+
+        <div style="padding-top: 15px" layout="column" layout-padding>
+
+            <md-input-container class="md-icon-float md-icon-right md-block" flex>
+                <label>Username</label>
+                <input required ng-model="user.username">
+            </md-input-container>
+
+            <md-input-container class="md-icon-float md-icon-right md-block" flex>
+                <label>Email</label>
+                <input required ng-model="user.email" md-maxlength="50" maxlength="50">
+
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <label>Password</label>
+                <input type="password" ng-model="user.password" md-select-on-focus>
+            </md-input-container>
+
+
+        </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button Xclass="md-primary" ng-disabled="canSave()" ng-click="saveUser()"
+                   style="margin-right:10px;">
+            Save
+        </md-button>
+    </md-dialog-actions>
+
+
+</md-dialog>

@@ -1,0 +1,70 @@
+<main-toolbar>
+
+    <md-button ng-click="goBack()" class="md-icon-button">
+        <md-icon aria-label="arrow back" class="material-icons">arrow_back</md-icon>
+        <md-tooltip md-direction="bottom">Go back</md-tooltip>
+    </md-button>
+    <h1 flex style="text-align: center" >Product - > {{ (product.id) ? product.name : "New" }}</h1>
+
+    <md-button ng-disabled="!allowedToSave" ng-click="updateProduct()" class="md-raised md-primary">Save Changes</md-button>
+</main-toolbar>
+
+<md-progress-linear ng-if="loading" md-mode="indeterminate"></md-progress-linear>
+
+<md-card flex>
+
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Product information</span>
+        </md-card-title-text>
+    </md-card-title>
+
+    <md-card-content>
+        <ng-form novalidate flex>
+
+            <section class="md-padding">
+
+                <div layout="row" layout-gt-sm="row" flex-gt-sm>
+
+                    <md-select style="margin-top: 6px !important;" flex ng-model="product.category" placeholder="Category" class="md-no-underline">
+                        <md-option value="food">Food</md-option>
+                        <md-option value="beverage">Beverage</md-option>
+                        <md-option value="cleaning">Cleaning</md-option>
+                    </md-select>
+
+                    <md-input-container flex>
+                        <label>Name</label>
+                        <input required="true" ng-model="product.name" maxlength="30" md-maxlength="30">
+                    </md-input-container>
+
+                    <md-input-container flex>
+                        <label>Price $</label>
+                        <input required="true" ng-model="product.price">
+                    </md-input-container>
+
+                </div>
+
+                <div layout="row" layout-gt-sm="row" flex-gt-sm>
+
+                    <md-input-container class="md-block" flex>
+                        <label>Description</label>
+                        <textarea ng-model="product.description" md-maxlength="1000" md-select-on-focus></textarea>
+                    </md-input-container>
+                </div>
+
+
+            </section>
+        </ng-form>
+    </md-card-content>
+
+
+    <div>
+        <form style="margin-left: 25px">
+            <input type="file" ng-file-select="onFileSelect($files)" ng-model="product.image">
+        </form>
+
+        <img ng-src="{{product.image}}" />
+
+    </div>
+
+</md-card>

@@ -1,0 +1,13 @@
+<md-toolbar Xng-if="!loginState">
+    <div class="md-toolbar-tools" style="background-color: #b0121d" layout="row" layout-align="start center" flex>
+
+        <md-button ng-if="!isSidebarOpen()" ng-click="openSidebar()" class="md-icon-button">
+            <md-icon aria-label="Menu" class="material-icons">menu</md-icon>
+            <md-tooltip md-direction="bottom">Open Nav Bar</md-tooltip>
+        </md-button>
+
+        <ng-transclude class="md-toolbar-tools" style="padding: 0px" flex layout="row"></ng-transclude>
+    </div>
+
+</md-toolbar>
+

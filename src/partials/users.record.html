@@ -1,0 +1,50 @@
+<main-toolbar>
+
+    <md-button ng-click="goBack()" class="md-icon-button">
+        <md-icon aria-label="arrow back" class="material-icons">arrow_back</md-icon>
+        <md-tooltip md-direction="bottom">Go back</md-tooltip>
+    </md-button>
+    <h1 flex style="text-align: center" >user - > {{ (user.username) ? user.username : "New" }}</h1>
+
+    <md-button ng-disabled="!allowedToSave" ng-click="updateUsers()" class="md-raised md-primary">Save Changes</md-button>
+</main-toolbar>
+
+<md-progress-linear ng-if="loading" md-mode="indeterminate"></md-progress-linear>
+
+<md-card flex>
+
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">User information</span>
+        </md-card-title-text>
+    </md-card-title>
+
+    <md-card-content>
+        <ng-form novalidate flex>
+
+            <section class="md-padding">
+
+                <div layout="row" layout-gt-sm="row" flex-gt-sm>
+
+                    <md-input-container flex>
+                        <label>Username</label>
+                        <input required ng-model="user.username" maxlength="100" md-maxlength="100">
+                    </md-input-container>
+
+                    <md-input-container flex>
+                        <label>Email</label>
+                        <input required maxlength="50" md-maxlength="50" ng-model="user.email">
+                    </md-input-container>
+
+                    <md-input-container flex>
+                        <label>Password</label>
+                        <input type="password" maxlength="100" md-maxlength="100" ng-model="user.password">
+                    </md-input-container>
+
+                </div>
+
+            </section>
+        </ng-form>
+    </md-card-content>
+
+</md-card>

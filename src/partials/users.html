@@ -1,0 +1,72 @@
+<main-toolbar>
+
+    <md-button ng-click="goBack()" class="md-icon-button">
+        <md-icon aria-label="arrow back" class="material-icons">arrow_back</md-icon>
+        <md-tooltip md-direction="bottom">Go back</md-tooltip>
+    </md-button>
+    <h1 flex style="text-align: center">Users</h1>
+</main-toolbar>
+<md-card>
+    <md-card-content>
+
+        <md-button class="md-fab md-fab-bottom-right md-primary" style="background-color: deepskyblue"
+                   ng-click="createNew($event)" aria-label="create-product">
+            <md-icon class="material-icons">add</md-icon>
+            <md-tooltip md-direction="left">Create User</md-tooltip>
+        </md-button>
+
+        <div layout="row" flex>
+
+            <div class="table-filter" flex>
+
+                <div class="list-search" layout="row">
+                    <div class="list-search-icon-container">
+                        <md-icon aria-label="Close" class="material-icons list-search-icon">search</md-icon>
+                    </div>
+                    <div class="list-search-input-container" flex>
+                        <input type="text" class="list-search-input" placeholder="Search" ng-disabled="disabled"
+                               ng-model="query" ng-model-options="{ debounce: { 'default': 0, 'blur': 0 } }">
+                    </div>
+                    <div class="list-close-icon-container" ng-if="showClearButton">
+                        <md-button ng-click="clearSearchText()">
+                            <md-icon list-close-icon aria-label="Close" class="material-icons list-search-icon">close</md-icon>
+                        </md-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="fade-in-out">
+            <md-table-container>
+                <table md-table class="iic-data-table">
+                    <thead md-head md-order="query.order">
+                    <tr md-row>
+                        <th md-column md-order-by="username">Username</th>
+                        <th md-column md-order-by="email">Email</th>
+                        <th md-column md-order-by="lastModifiedBy">Last Modified By</th>
+                    </tr>
+                    </thead>
+                    <tbody md-body>
+                    <tr md-row
+                        ng-repeat="user in users | filter: search | orderBy: query.order"
+                        class="animate-list-item clickable" ng-click="goTo(user.id)">
+
+                        <td md-cell md-highlight-text="query" md-highlight-flags="i">
+                            {{ :: user.username}}
+                        </td>
+                        <td md-cell md-highlight-text="query" md-highlight-flags="i">
+                            {{ :: user.email}}
+                        </td>
+                        <td md-cell md-highlight-text="query" md-highlight-flags="i">
+                            {{ :: user.lastModifiedBy }}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </md-table-container>
+        </section>
+
+
+    </md-card-content>
+
+</md-card>
